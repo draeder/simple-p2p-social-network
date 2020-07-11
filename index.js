@@ -166,7 +166,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("Warning: Input field <input id='" + input.id + "'> is not defined in the function named 'processInput'.")
         }
         if(message){
-            b.send(profileName + " - " + message) 
+            //b.send(profileName + " - " + message) 
+            b.send(message) 
         }
     }
 
