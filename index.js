@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         .appendChild(inp)
         .setAttribute("id", "reply-input")
 
-        //feed.append(spacer, article.nextSibling)
         article.after(spacer)
         getInputTags() //update input tags
     }
