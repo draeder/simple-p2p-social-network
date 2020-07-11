@@ -17,7 +17,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         //console.log("There was an id: " + identifier)
         window.history.pushState("","","?r="+identifier);
     }
-
+    let profileName = localStorage.getItem("Peer Name")
+    if(!profileName){
+        let profileName = "Anonymous"
+    }
 //// Process URL from the address bar
     const url = window.location.href; 
     let urlObject = new URL(url);
@@ -141,6 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let profile = {}
         if(input.id=="name-input"){
             console.log("name-input")
+            localStorage.setItem("Peer Name", this.value)
             //create a user profile
             //message = new Profile("profile", identifier, Date.now(), firsstName, lastName, email, about, avatar)
         } else
@@ -160,7 +164,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("Warning: Input field <input id='" + input.id + "'> is not defined in the function named 'processInput'.")
         }
         if(message){
-            b.send(message) 
+            b.send(profileName + " - " + message) 
         }
     }
 
