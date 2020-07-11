@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     let profileName = localStorage.getItem("Peer Name")
     if(!profileName){
         profileName = "Anonymous"
+        document.getElementById("name-input").focus()
+    } else {
+        document.getElementById("name-input").value = profileName
+        document.getElementById("post-input").focus()
     }
     //let nameInput = document.getElementById("name-input")
     //nameInput.value = profileName
@@ -77,8 +81,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             year: 'numeric', month: 'numeric', day: 'numeric',
             hour: 'numeric', minute: 'numeric', second: 'numeric',
             hour12: true
-          };
-        var date = new Intl.DateTimeFormat('default', options).format(post.date)
+          },
+        date = new Intl.DateTimeFormat('default', options).format(post.date)
 
         article.innerHTML = "<p>" + post.name + "</p><hr><p>" + post.message + "<p class='postdate'>" + date + "</p>"
 
@@ -176,7 +180,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             }
             else if(!input.value){
-                input.value = localStorage.getItem("Peer Name") || "Anonymous" 
+                input.value = localStorage.getItem("Peer Name") || "Anonymous"
             }
             profileName = input.value
             //create a user profile
