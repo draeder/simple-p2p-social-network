@@ -3,36 +3,35 @@ An experimental effort to build a simple serverless, fully decentralized peer-to
 
 The service can run directly in a browser tab without any need for server hosting by simply downloading index.html and opening it in a browser.
 
-At present, the service is completely experimental (expect things to be broken!)--researching, testing and playing around with various decentralized APIs like the follwing:
+At present, the service is completely experimental (expect some bugs)--researching, testing and playing around with various decentralized APIs like the follwing:
 
 - Bugout API (pre-alpha): A decentralized messenging API that connects peers together and is built upon WebTorrent and WebRTC.
 - AvionDB (alpha): an offline first, mongo-like, security conscious decentralized database built upon OrbitDB and IPFS
 - js-ipfs: decentralized data storage
 
 ## Current Features
-- Create a 'pop-up' P2P social network that can be accessed by anyone who has the URL
+- Create a 'pop-up' P2P social network that can be accessed by anyone who has the generated URL
 - Once peers are connected, you can share posts and comment on them between each other
+- Posts and comment input allows HTML tags. Be careful with out of date browsers that may process scripts!
 
 ## Current Limitations
-### Lots
-- I'm using GitHub Pages as my test environment LOL
-- Connections to peers don't happen right away, and sometimes not at all--especially using the Chrome Browser on Android (thus the warning), but other browsers on Android seem to work okay
-- Established sessions may "time out"--probably due to how the device manages memory/cpu/network connectivity
-- Chat history is not sent to new joiners, yet
-- Chat history is stored in ipfs as plain text
-- The UI is confusing
-- Spaghetti code
+- Post & comment history is not sent to new joiners, yet
+- Missing many familiar social network features
+- Code security has not been evaluated
 
 ## Usage
-1. Launch index.html (no other files are needed; ignore them unless you want broken code)
-2. Create a room and username (don't forget to hit enter in each field)
-3. Share the generated URL from the address bar with friends if you are hosting index.html somewhere, otherwise send them the file and have them enter your room ID from the URL (the string after 'r=').
+### Online Demo
+1. Demo available at https://social.peer.ooo
+2. Share the generated URL with friends, or open in a different browser/browser tab to test it out yourself
+
+### Run locally
+1. Download and launch index.html
+2. Copy the URL into another browser or browser tab
+- Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "r="). 
+- Anyone with that string may add the search parameter, "?r=" plus the generated string to reach your instance and communicate
 
 ## Short-term Goals
-- Implement and test AvionDB for chat history
 - Share chat history with new joins to the room
-- Move away from a chat room toward an actual User Profile
-- Link replies to main posts
 - Image storage and retrieval
 - Avatars
 - Export/delete historic data
