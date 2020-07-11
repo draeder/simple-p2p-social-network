@@ -14,8 +14,9 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 ## Current Limitations
 - Post & comment history is not sent to new joiners, yet
-- Many familiar social network features are not yet available
+- Many familiar social network features are not yet available (hashtags, likes, post sharing, searchs, followers, etc). WebTorrent's DHT may hold a solution to some of these things
 - Code security has not been evaluated
+- Connections on Chrome for Android do not work, but other browser on Android seem to work okay
 
 ## Usage
 ### Online Demo
@@ -26,7 +27,7 @@ At present, the service is completely experimental (expect some bugs)--researchi
 1. Download and launch index.html
 2. Copy the URL into another browser or browser tab
 - Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "?r="). 
-- Anyone with that string may add the search parameter "?r=" plus the generated string to reach your instance and communicate
+- Anyone with that string may add the search parameter "?r=" to the URL followed by the generated string to connect to your instance and communicate
 
 > `file:///index.html?r=47321648ef3de6d1bffee634ab3aeba24d775f23`
 
