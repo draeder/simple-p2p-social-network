@@ -11,8 +11,8 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 ## Current Features
 - Create a 'pop-up' P2P social network that can be accessed by anyone who has the generated URL
-- Once peers are connected, peers can share new posts and comments
-- Posts and comment input allows HTML tags. Be careful when using out of date browsers--they may process scripts!
+- Once connected to the instance, peers can share new posts and comments between each other
+- Posts and comments allows HTML tags. Be careful when using out of date browsers--they may process scripts!
 
 ![Screenshot](https://raw.githubusercontent.com/draeder/simple-p2p-social-network/master/sreenshot.png)
 
@@ -32,10 +32,10 @@ At present, the service is completely experimental (expect some bugs)--researchi
 - Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "?r="). 
 - Anyone with that string may add the search parameter "?r=" plus the generated string to reach your instance and communicate
 
-> `file:///index.html?r=47321648ef3de6d1bffee634ab3aeba24d775f23`
+>> `file:///index.html__?r=47321648ef3de6d1bffee634ab3aeba24d775f23__`
 
 ## Short-term Goals
-- Share chat history with new joins to the room
+- Share chat history with new joins to the instance
 - Generate a QR code for easy access to the instance
 - Image storage and retrieval
 - Avatars
