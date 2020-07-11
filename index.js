@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           },
         date = new Intl.DateTimeFormat('default', options).format(post.date)
 
-        article.innerHTML = "<p>" + post.name + "</p><hr><p>" + post.message + "<p class='postdate'>" + date + "</p>"
+        article.innerHTML = "<p><b>" + post.name + "</b></p><hr><p>" + post.message + "<p class='postdate'>" + date + "</p>"
 
         feed.insertBefore(article, feed.firstChild)
         .setAttribute("id", post.postId)
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         var date = new Intl.DateTimeFormat('default', options).format(reply.date)
 
         comment.setAttribute("class", "reply")
-        comment.innerHTML = "<p>" + reply.name + "</p><hr><p>" + reply.message + "<p class='postdate'>" + date + "</p>"
+        comment.innerHTML = "<p><b>" + reply.name + "</b></p><hr><p>" + reply.message + "<p class='postdate'>" + date + "</p>"
 
         replies.appendChild(comment, replies)
         .setAttribute("id", reply.replyId)
