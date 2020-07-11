@@ -14,7 +14,7 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 ## Current Limitations
 - Post & comment history is not sent to new joiners, yet
-- Many familiar social network features are not yet available (hashtags, likes, post sharing, searchs, followers, etc). WebTorrent's DHT may hold a solution to some of these things
+- Many familiar social network features are not yet available (hashtags, likes, post sharing, searchs, followers, etc)
 - Code security has not been evaluated
 - Connections on Chrome for Android do not work, but other browser on Android seem to work okay
 
