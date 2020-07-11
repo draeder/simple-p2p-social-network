@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         //console.log("There was no id, so set one: " + identifier)
     } else {
         //console.log("There was an id: " + identifier)
+        window.history.pushState("","","?r="+identifier);
     }
 
 //// Process URL from the address bar
