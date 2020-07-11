@@ -18,10 +18,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.history.pushState("","","?r="+identifier);
     }
 
+//// Get name from local storage
     let profileName = localStorage.getItem("Peer Name")
     if(!profileName){
-        let profileName = "Anonymous"
+        profileName = "Anonymous"
     }
+    let nameInput = document.getElementById("name-input")
+    nameInput.value = profileName
+
 //// Process URL from the address bar
     const url = window.location.href; 
     let urlObject = new URL(url);
@@ -72,8 +76,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         inp.name = post.postId
         inp.setAttribute("placeholder","Comment . . .")
-        article.setAttribute('class', 'article')
-        article.innerHTML = post.message + "<p>"
+        article.setAttribute('class', 'post')
+
+        var options = {
+            year: 'numeric', month: 'numeric', day: 'numeric',
+            hour: 'numeric', minute: 'numeric', second: 'numeric',
+            hour12: true
+          };
+        var date = new Intl.DateTimeFormat('default', options).format(post.date)
+
+        article.innerHTML = "<p>" + post.name + "</p><hr><p>" + post.message + "<p class='postdate'>" + date + "</p>"
 
         feed.insertBefore(article, feed.firstChild)
         .setAttribute("id", post.postId)
@@ -92,10 +104,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     function addReply (reply) { 
         console.log(reply.postId)
         var replies = document.getElementById(reply.postId),
-        comment = document.createElement("blockquote")
+        comment = document.createElement("article")
         d = document.createElement("div")
-        comment.setAttribute("class", "blockquote")
-        comment.innerText = reply.message 
+
+        var options = {
+            year: 'numeric', month: 'numeric', day: 'numeric',
+            hour: 'numeric', minute: 'numeric', second: 'numeric',
+            hour12: true
+          };
+        var date = new Intl.DateTimeFormat('default', options).format(reply.date)
+
+        comment.setAttribute("class", "reply")
+        comment.innerHTML = "<p>" + reply.name + "</p><hr><p>" + reply.message + "<p class='postdate'>" + date + "</p>"
 
         replies.appendChild(comment, replies)
         .setAttribute("id", reply.replyId)
@@ -113,10 +133,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         //Process 'clicked away' or 'tabbed out'
         for (let onBlur of inputTags){
-            onBlur.addEventListener('blur', getInputTabOut)
+            onBlur.addEventListener('blur', function(){
+                if(this.id=="name-input"){
+                    if(this.value){
+                        if(this.value!="Anonymous"){
+                            getInputTabOut
+                        }
+                    }
+                    else if(!this.value){
+                        this.value="Anonymous"
+                    }
+                }
+            })
+        }
+        //Process 'clicked in'
+        for (let onClick of inputTags){
+            onClick.addEventListener('click', function(){
+                if(this.id=="name-input"){
+                    if(this.value=="Anonymous"){
+                        this.value=""
+                    }
+                }
+            })
         }
     }
+    
     getInputTags()
+
     function getInput (e) {
         //console.log("Typing...")
         if (e.keyCode == 13) {
@@ -153,20 +196,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(input.id=="post-input"){
             //create a post message
             console.log("post-input")
-            message = new Post("post", identifier, generateId(), Date.now(), input.value)
+            message = new Post("post", identifier, profileName, generateId(), Date.now(), input.value)
             input.value = ""
         } else 
         if(input.id=="reply-input"){
             console.log("reply-input")
             //create a reply message
             var postId=input.name
-            message = new Reply("reply", identifier, postId, generateId(), Date.now(), input.value)
+            message = new Reply("reply", identifier, profileName, postId, generateId(), Date.now(), input.value)
             input.value = ""
         } else {
             console.log("Warning: Input field <input id='" + input.id + "'> is not defined in the function named 'processInput'.")
         }
         if(message){
-            //b.send(profileName + " - " + message) 
+            console.log(profileName)
+            //message=profileName + " " + message
+
             b.send(message) 
         }
     }
@@ -185,18 +230,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Create a post object
-    function Post(type, identifier, postId, date, message) {
+    function Post(type, identifier, name, postId, date, message) {
         this.type = type
-        this.identifier=identifier
-        this.postId=postId
+        this.identifier = identifier
+        this.name = name
+        this.postId = postId
         this.date = date
         this.message = message
     }
 
     // Create a reply object
-    function Reply(type, identifier, postId, replyId, date, message) {
+    function Reply(type, identifier, name, postId, replyId, date, message) {
         this.type = type,
         this.identifier = identifier
+        this.name = name
         this.postId = postId
         this.replyId = replyId
         this.date = date
