@@ -34,6 +34,7 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 ## Short-term Goals
 - Share chat history with new joins to the room
+- Generate a QR code for easy access to the instance
 - Image storage and retrieval
 - Avatars
 - Export/delete historic data
