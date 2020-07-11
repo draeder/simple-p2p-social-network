@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple P2P Social Neetwork</title>
+    <script src="https://chr15m.github.io/bugout/bugout.min.js" integrity="sha384-wp4EShIOwQyaJreUc1RAWQrSvOHeLb5fcXYwYdL5Lbj++G7B0touaxiqqj5DKQaY" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+    <script src="https://unpkg.com/aviondb/dist/aviondb.min.js"></script>
+    <script src='index.js'></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ"crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body{
+       background-color: #070b12; 
+       color: white;
+       padding: 20px;
+       padding-right: 20px;
+    }
+
+    article{
+        background-color:#0f192b;
+        padding: 10px;
+        border: 1px solid #1b2d4b;
+        color:white;
+        padding-right:20px;
+    }
+    blockquote {
+        background: #142138;
+        padding: 10px;
+        Word-Break: break-all;
+    }
+    blockquote:before {
+        color: white;
+    }
+    blockquote p {
+        display: inline;
+    }
+    input {
+        width: 100%;
+        border: 1px solid #070b12;
+        box-sizing : border-box;
+        box-shadow: none;
+        background-color:#1b2d4b;
+        padding: 10px;
+        color: white;
+    }
+    input:focus, textarea:focus, select:focus{
+        outline: none;
+    }
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: #576e94;
+        opacity: 1; /* Firefox */
+    }
+
+</style>
+<body>
+    <aviondb-status></aviondb-status>
+    <div style="width:100%">
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable" style="display: flex; justify-content: flex-end">
+            <a href="#" class="pure-menu-link pure-menu-heading" >
+                <bugout-status title="Awiating peers"><i class="fa fa-circle-o-notch fa-spin fa-lg" style="color:orange"></i>
+                </bugout-status>    
+            </a>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item">
+                    <a href="#" class="pure-menu-link">
+                        <i class="fa fa-cog fa-lg" aria-hidden="true" style="color:#576e94"></i> 
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <input id="name-input" placeholder="Your name"></input><p>
+    <input id="post-input" placeholder="Create a new post . . ."></input><p>
+
+    <main id="feed">
+    </main>
+
+</body>
+<script>
+</script>
+</html>
