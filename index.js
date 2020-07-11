@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         //console.log("There was an id: " + identifier)
         window.history.pushState("","","?r="+identifier);
     }
+
     let profileName = localStorage.getItem("Peer Name")
     if(!profileName){
         let profileName = "Anonymous"
@@ -145,6 +146,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         if(input.id=="name-input"){
             console.log("name-input")
             localStorage.setItem("Peer Name", this.value)
+            profileName = this.value
             //create a user profile
             //message = new Profile("profile", identifier, Date.now(), firsstName, lastName, email, about, avatar)
         } else
