@@ -1,13 +1,9 @@
 # Simple P2P Social Network
 An experimental effort to build a simple serverless, fully decentralized peer-to-peer social network.
 
-The service can run directly in a browser tab without any need for server hosting by simply downloading index.html and opening it in a browser.
+The service can run directly in a browser tab without any need for server hosting by simply downloading index.html and opening it in a browser. It can also be hosted, but everything happens in the browser. There is no server-side code to speak of.
 
-At present, the service is completely experimental (expect some bugs)--researching, testing and playing around with various decentralized APIs like the follwing:
-
-- Bugout API (pre-alpha): A decentralized messenging API that connects peers together and is built upon WebTorrent and WebRTC.
-- AvionDB (alpha): an offline first, mongo-like, security conscious decentralized database built upon OrbitDB and IPFS
-- js-ipfs: decentralized data storage
+At present, the service is completely experimental (expect some bugs)--researching, testing and playing around with various decentralized APIs like Bugout, AvionDB, js-ipfs among others.
 
 ## Current Features
 - Create a 'pop-up' P2P social network that can be accessed by anyone who has the generated URL
