@@ -60,6 +60,9 @@
     input:focus, textarea:focus, select:focus{
         outline: none;
     }
+    #name-input::placeholder{
+        text-align: right;
+    }
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #576e94;
         opacity: 1; /* Firefox */
@@ -85,7 +88,7 @@
     </div>
 
 
-    <input id="name-input" placeholder="Your name"></input><p>
+    <input id="name-input" placeholder=". . . Your Name"></input><p>
     <input id="post-input" placeholder="Create a new post . . ."></input><p>
 
     <main id="feed">

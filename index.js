@@ -12,9 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let identifier = generateId() 
         localStorage.setItem("Peer ID", identifier)
         window.history.pushState("","","?r="+identifier);
-        //console.log("There was no id, so set one: " + identifier)
     } else {
-        //console.log("There was an id: " + identifier)
         window.history.pushState("","","?r="+identifier);
     }
 
@@ -41,8 +39,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
         document.getElementsByTagName("bugout-status")[0].innerHTML=
             "<i class='fa fa-exchange fa-lg' aria-hidden='true' style='color: green'></i>"
-        
-        //console.log("Seen: " + address)
     })
 
 //// Handle incoming messages
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     b.on("message", function(address, msg){
         //let message = JSON.stringify(msg)
         processMsg(msg)
-        //console.log(address)
     })
 
     // Process message types
@@ -102,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     // Add receivced replies to DOM
     function addReply (reply) { 
-        console.log(reply.postId)
         var replies = document.getElementById(reply.postId),
         comment = document.createElement("article")
         d = document.createElement("div")
@@ -125,7 +119,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Get value from *any* input field upon value change
     function getInputTags(){
         var inputTags = document.getElementsByTagName("input")
-        //console.log(inputTags)
     
         //Process carriage return
         for (let keyPress of inputTags){
@@ -133,18 +126,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         //Process 'clicked away' or 'tabbed out'
         for (let onBlur of inputTags){
-            onBlur.addEventListener('blur', function(){
-                if(this.id=="name-input"){
-                    if(this.value){
-                        if(this.value!="Anonymous"){
-                            getInputTabOut
-                        }
-                    }
-                    else if(!this.value){
-                        this.value="Anonymous"
-                    }
-                }
-            })
+            onBlur.addEventListener('blur', getInputTabOut)
         }
         //Process 'clicked in'
         for (let onClick of inputTags){
@@ -161,7 +143,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     getInputTags()
 
     function getInput (e) {
-        //console.log("Typing...")
         if (e.keyCode == 13) {
             e.preventDefault();
             processInput(this)
@@ -169,16 +150,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function getInputTabOut (e) {
-        console.log("Tabbed or clicked out... " + this.id)
-        console.log(this.value)
-        if(this.value){
-            console.log(this.id + " has a value")
+        if(this.value) {
             e.preventDefault()
             processInput (this)
-        } else
-        {
-            console.log(this.id + " has no value")
-            console.log(this)
+        } 
+        else {
+            e.preventDefault
+            processInput(this)
         }
     }
 
@@ -187,31 +165,42 @@ document.addEventListener('DOMContentLoaded', async () => {
         let message = {}
         let profile = {}
         if(input.id=="name-input"){
-            console.log("name-input")
-            localStorage.setItem("Peer Name", input.value)
+            if(input.value){
+                if(input.value!="Anonymous"){
+                    localStorage.setItem("Peer Name", input.value)
+                } 
+                else if(input.value=="Anonymous" && profileId){
+                    localStorage.removeItem("Peer Name")
+                    input.value = "Anonymous"
+                    profileId = "Anonymous"
+                }
+            }
+            else if(!input.value){
+                input.value = localStorage.getItem("Peer Name") || "Anonymous" 
+            }
             profileName = input.value
             //create a user profile
             //message = new Profile("profile", identifier, Date.now(), firsstName, lastName, email, about, avatar)
-        } else
-        if(input.id=="post-input"){
+        } 
+        else if (input.id=="post-input"){
             //create a post message
-            console.log("post-input")
-            message = new Post("post", identifier, profileName, generateId(), Date.now(), input.value)
-            input.value = ""
-        } else 
-        if(input.id=="reply-input"){
-            console.log("reply-input")
+            if(input.value){
+                message = new Post("post", identifier, profileName, generateId(), Date.now(), input.value)
+                input.value = ""
+            }
+        } 
+        else if(input.id=="reply-input"){
             //create a reply message
-            var postId=input.name
-            message = new Reply("reply", identifier, profileName, postId, generateId(), Date.now(), input.value)
-            input.value = ""
+            if(input.value){
+                var postId=input.name
+                message = new Reply("reply", identifier, profileName, postId, generateId(), Date.now(), input.value)
+                input.value = ""
+            }
         } else {
             console.log("Warning: Input field <input id='" + input.id + "'> is not defined in the function named 'processInput'.")
         }
         if(message){
-            console.log(profileName)
             //message=profileName + " " + message
-
             b.send(message) 
         }
     }
