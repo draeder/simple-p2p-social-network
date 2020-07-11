@@ -11,12 +11,12 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 ## Current Features
 - Create a 'pop-up' P2P social network that can be accessed by anyone who has the generated URL
-- Once peers are connected, you can share posts and comment on them between each other
-- Posts and comment input allows HTML tags. Be careful with out of date browsers that may process scripts!
+- Once peers are connected, peers can share new posts and comments
+- Posts and comment input allows HTML tags. Be careful when using out of date browsers--they may process scripts!
 
 ## Current Limitations
 - Post & comment history is not sent to new joiners, yet
-- Missing many familiar social network features
+- Many familiar social network features are not yet available
 - Code security has not been evaluated
 
 ## Usage
@@ -27,8 +27,10 @@ At present, the service is completely experimental (expect some bugs)--researchi
 ### Run locally
 1. Download and launch index.html
 2. Copy the URL into another browser or browser tab
-- Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "r="). 
-- Anyone with that string may add the search parameter, "?r=" plus the generated string to reach your instance and communicate
+- Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "?r="). 
+- Anyone with that string may add the search parameter "?r=" plus the generated string to reach your instance and communicate
+
+`file:///index.html?r=47321648ef3de6d1bffee634ab3aeba24d775f23`
 
 ## Short-term Goals
 - Share chat history with new joins to the room
