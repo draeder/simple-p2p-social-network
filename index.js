@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         let profile = {}
         if(input.id=="name-input"){
             console.log("name-input")
-            localStorage.setItem("Peer Name", this.value)
-            profileName = this.value
+            localStorage.setItem("Peer Name", input.value)
+            profileName = input.value
             //create a user profile
             //message = new Profile("profile", identifier, Date.now(), firsstName, lastName, email, about, avatar)
         } else
