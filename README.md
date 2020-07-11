@@ -14,6 +14,8 @@ At present, the service is completely experimental (expect some bugs)--researchi
 - Once peers are connected, peers can share new posts and comments
 - Posts and comment input allows HTML tags. Be careful when using out of date browsers--they may process scripts!
 
+
+
 ## Current Limitations
 - Post & comment history is not sent to new joiners, yet
 - Many familiar social network features are not yet available
