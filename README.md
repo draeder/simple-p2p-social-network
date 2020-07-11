@@ -34,25 +34,3 @@ At present, the service is completely experimental (expect some bugs)--researchi
 
 > `file:///index.html?r=47321648ef3de6d1bffee634ab3aeba24d775f23`
 
-## Short-term Goals
-- Share chat history with new joins to the instance
-- Generate a QR code for easy access to the instance
-- Image storage and retrieval
-- Avatars
-- Export/delete historic data
-
-## Long-term Goals
-- Eternally open source
-- Never require a centralized server for any functionality
-- Ownership of user data always belongs to the user 100%
-- Improve the UI
-- Streaming video file playback
-- Live p2p video (1:1 & 1:many)
-- End-to-end encryption/security/privacy options
-- Identity system
-- Same data across all devices for the same user (https://simpleaswater.com/aviondb-p2p-sync/)
-- User search
-- Manage follower permissions / User blocking
-- Notifications
-- An API --If I learn enough
-
