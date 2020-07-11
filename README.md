@@ -12,7 +12,7 @@ At present, the service is completely experimental (expect some bugs)--researchi
 ## Current Features
 - Create a 'pop-up' P2P social network that can be accessed by anyone who has the generated URL
 - Once connected to the instance, peers can share new posts and comments between each other
-- Posts and comments allows HTML tags. Be careful when using out of date browsers--they may process scripts!
+- Posts and comments allow HTML tags. Be careful when using out of date/insecure browsers--they may process scripts!
 
 ![Screenshot](https://raw.githubusercontent.com/draeder/simple-p2p-social-network/master/sreenshot.png)
 
