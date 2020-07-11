@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(!profileName){
         profileName = "Anonymous"
     }
-    let nameInput = document.getElementById("name-input")
-    nameInput.value = profileName
+    //let nameInput = document.getElementById("name-input")
+    //nameInput.value = profileName
 
 //// Process URL from the address bar
     const url = window.location.href; 
