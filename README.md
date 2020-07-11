@@ -32,7 +32,7 @@ At present, the service is completely experimental (expect some bugs)--researchi
 - Note: what makes the magic happen is the 'Peer ID' portion of the URL (the search string after "?r="). 
 - Anyone with that string may add the search parameter "?r=" plus the generated string to reach your instance and communicate
 
->> `file:///index.html__?r=47321648ef3de6d1bffee634ab3aeba24d775f23__`
+> `file:///index.html?r=47321648ef3de6d1bffee634ab3aeba24d775f23`
 
 ## Short-term Goals
 - Share chat history with new joins to the instance
