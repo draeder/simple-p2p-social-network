@@ -14,7 +14,7 @@
     // Update connection status
         // Awating peers
         // Connected
-        // Peer count
+            // Peer count
         // Peer disconnected
 
 //// Identitiy handler
@@ -26,12 +26,20 @@
     // Get index (from instance)
         // Check index integrity
     // Create index (new instance)
-    // Append index (new peer)
+    // Append index (new peer) (last join)
     // Search index (existing instances)
 
-//// Follows handler - keeps track of peers you are following
+//// Following handler - keeps track of peers you are following
 
 //// Followed handler - keeps track of peers following you
+    // Manage peers
+
+//// Inbound content handler
+    // Allow/Block types of media
+        //Text
+        //Images
+        //Video
+        //Articles
 
 //// Local Message handler
     // Post
@@ -43,6 +51,7 @@
 //// Local Message retrieval
     // Import to another device with confirmed identity
     // Respond to peer requests for message history (rpc request)
+    // Export message data
 
 //// Peer Message History handler
     // all posts &&/|| comments
@@ -56,6 +65,9 @@
     // Dislikes
     // Follows
     // Followers
+
+//// Extensible Options handler
+    // Get/set additional properties on objects
 
 
 
