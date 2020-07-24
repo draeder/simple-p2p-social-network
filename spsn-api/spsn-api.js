@@ -2,11 +2,27 @@
 ////            SPSN Browser API            ////
 ////////////////////////////////////////////////
 
+//document.addEventListener('DOMContentLoaded', async () => {
+console.log("API loaded")
+//// Process DOM inputs in real time //newly added inputs need ot be reprocessed whenever a new input is added to the DOM
+    // Textarea
+    // Input
+    // Radial
+    // Checkbox
+
+    //let spsn = new SPSN() //<- API call
+    function SPSN(args,opts){
+        this.args = args
+        this.opts = opts
+        console.log(args)
+        console.log(opts)
+    }
+
 //// Connection handler
     // New Server
-        // Create joinable QR code
-    // Peer Swarm
-        // Create joinable QR code
+        // Create joinable URL and associated QR code
+    // Create/Join Peer Swarm
+        // Create joinable URL and associated QR code
     // New Client
         // Join server or swarm by ID
             // Parse URL for ID
@@ -16,6 +32,7 @@
         // Connected
             // Peer count
         // Peer disconnected
+            // Peer count
 
 //// Identitiy handler
     // Create identity (nacl)
@@ -69,5 +86,5 @@
 //// Extensible Options handler
     // Get/set additional properties on objects
 
-
+//})
 
