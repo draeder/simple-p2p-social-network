@@ -30,15 +30,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Create or join a server
     if(peerId){
-        //let b = new Bugout(this.opts)
-        //bugout(peerId)
         identifier = peerId
         console.log("Joining existing server: " + peerId)
-        //window.history.pushState("","","?p="+b.seed);
-        //console.log(b.seed)
     } else {
         identifier = {seed: localStorage["peer-seed"]}
-        //let b = new Bugout({seed: localStorage["peer-seed"]})
         localStorage["peer-seed"] = b.seed;
         console.log("Creating server with identifier: " + b.seed)
         window.history.pushState("","","?p="+b.seed);
@@ -47,6 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let b = new Bugout(identifier)
     b.on("seen", function(address){
         console.log("Connected! Peer: " + address)
+        console.log(b.connections)
     })
 
     function SPSN(args,opts){
