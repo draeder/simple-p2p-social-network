@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Detect connected peers
     b.once("seen", function(address){
         console.log("Peers connected!")
-        console.log("Connected peers: " + JSON.stringify(b.peers))
     })
 
     b.on("connections", function(c){
@@ -57,6 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.log("No peers connected")
         } else {
             console.log("Connections: " + c)
+            console.log("Connected peers: " + JSON.stringify(b.peers))
         }
     })
 
