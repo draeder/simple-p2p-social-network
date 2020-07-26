@@ -52,11 +52,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     })
 
     b.on("connections", function(c){
-        if(c==0){
+        if(c == 0){
             console.log("No peers connected")
         } else {
             console.log("Connections: " + c)
-            console.log("Connected peers: " + JSON.stringify(b.peers))
         }
     })
 
