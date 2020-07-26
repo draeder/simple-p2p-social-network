@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     let b = new Bugout(identifier)
     console.log("My peer-seed: " + b.seed)
     console.log("My peer address: " + b.address())
-    console.log("Connected peers: " + JSON.stringify(b.peers))
 
     // Detect connected peers
     b.once("seen", function(address){
         console.log("Peers connected!")
+        console.log("Connected peers: " + JSON.stringify(b.peers))
     })
 
     b.on("connections", function(c){
