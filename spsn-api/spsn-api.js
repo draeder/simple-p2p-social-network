@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function bugout(identifier){
         let b = new Bugout(identifier)
-        b.once("seen", function(address){
+        b.on("seen", function(address){
             console.log("Connected! Peer: " + address)
         })
     }
