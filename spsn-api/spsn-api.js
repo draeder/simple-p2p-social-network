@@ -17,17 +17,18 @@ document.addEventListener('DOMContentLoaded', async () => {
     const url = window.location.href; 
     let urlObject = new URL(url);
     let urlStr = urlObject.href
-    let urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + urlStr
 
+    // testing QR code
+    let urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + urlStr
     var img = document.createElement("img");
     img.src = urlQR;
     document.body.appendChild(img);
 
+    // Process URL for peer identifier
     let peerId = urlObject.searchParams.get('p')
     if(!peerId){
         peerId = localStorage.getItem("peer-seed")
     }
-
     // Create or join a server
     if(peerId){
         identifier = peerId
@@ -40,17 +41,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     let b = new Bugout(identifier)
-    b.on("seen", function(address){
-        //console.log("Connected! Peer: " + address)
-        let connections = b.connections()
-        console.log("Connected peers: " + connections)
+
+    // Detect connected peers
+    b.once("seen", function(address){
+        console.log("Peers connected!")
     })
 
     b.on("left",function(address){
         console.log("Peer left: " + address )
     })
+
     b.on("connections", function(c){
-        console.log("Connections: " + c)
+        if(c==0){
+            console.log("No peers connected")
+        } else {
+            console.log("Connections: " + c)
+        }
     })
 
     function SPSN(args,opts){
