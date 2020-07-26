@@ -41,8 +41,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let b = new Bugout(identifier)
     b.on("seen", function(address){
-        console.log("Connected! Peer: " + address)
-        console.log(b.connections())
+        //console.log("Connected! Peer: " + address)
+        let connections = b.connections()
+        console.log("Connected peers: " + connections)
+    })
+    b.on("left", function(address){
+        console.log("Peer left: " + address )
     })
 
     function SPSN(args,opts){
