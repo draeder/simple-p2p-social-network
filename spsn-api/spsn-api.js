@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     //let spsn = new SPSN() //<- API call
 
 //// Connection handler
+    // Get URL from address bar
     const url = window.location.href; 
     let urlObject = new URL(url);
     let urlStr = urlObject.href
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(!peerId){
         peerId = localStorage.getItem("peer-seed")
     }
+
     // Create or join a server
     if(peerId){
         identifier = peerId
@@ -41,14 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     let b = new Bugout(identifier)
+    console.log("My peer-seed: " + b.seed)
 
     // Detect connected peers
     b.once("seen", function(address){
         console.log("Peers connected!")
-    })
-
-    b.on("left",function(address){
-        console.log("Peer left: " + address )
     })
 
     b.on("connections", function(c){
