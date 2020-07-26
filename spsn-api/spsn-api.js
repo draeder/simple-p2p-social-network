@@ -45,8 +45,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         let connections = b.connections()
         console.log("Connected peers: " + connections)
     })
-    b.left(function(address){
+
+    b.on("left",function(address){
         console.log("Peer left: " + address )
+    })
+    b.on("connections", function(c){
+        console.log("Connections: " + c)
     })
 
     function SPSN(args,opts){
