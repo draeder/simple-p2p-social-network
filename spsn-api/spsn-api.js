@@ -31,35 +31,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Create or join a server
     if(peerId){
         //let b = new Bugout(this.opts)
-        bugout(peerId)
+        //bugout(peerId)
+        identifier = peerId
         console.log("Joining existing server: " + peerId)
         //window.history.pushState("","","?p="+b.seed);
         //console.log(b.seed)
     } else {
-        let b = new Bugout({seed: localStorage["peer-seed"]})
+        identifier = {seed: localStorage["peer-seed"]}
+        //let b = new Bugout({seed: localStorage["peer-seed"]})
         localStorage["peer-seed"] = b.seed;
         console.log("Creating server with identifier: " + b.seed)
         window.history.pushState("","","?p="+b.seed);
     }
 
-    // Create or join a swarm
-    if(this.args=="swarm"){
-        if(!this.opts){
-            console.error("[ERROR] Missing swarm name passed to SPSN!")
-        } else {
-            //let b = new Bugout(this.opts)
-            bugout(this.opts)
-            console.log("Created new peer swarm: " + this.opts)
-            window.history.pushState("","","?p="+this.opts);
-        }
-    }
-
-    function bugout(identifier){
-        let b = new Bugout(identifier)
-        b.on("seen", function(address){
-            console.log("Connected! Peer: " + address)
-        })
-    }
+    let b = new Bugout(identifier)
+    b.on("seen", function(address){
+        console.log("Connected! Peer: " + address)
+    })
 
     function SPSN(args,opts){
         this.args = args
