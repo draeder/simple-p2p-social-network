@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let connections = b.connections()
         console.log("Connected peers: " + connections)
     })
-    b.on("left", function(address){
+    b.left(function(address){
         console.log("Peer left: " + address )
     })
 
