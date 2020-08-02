@@ -100,9 +100,7 @@ function SPSN(config, customId){
             b.destroy();
             delete e['returnValue'];
         });
-        function waitingText(txt){
-            SPSN.prototype.waitingTxt = txt
-        }
+
     //// Custom elements
         // Connection status element
         class Status extends HTMLElement {
