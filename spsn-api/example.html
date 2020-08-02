@@ -1,13 +1,74 @@
 <!doctype html>
 <html>
 <head>
+    <title>Simple P2P Social Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/eventemitter3/4.0.4/index.min.js"></script>
+    <script src="https://chr15m.github.io/bugout/bugout.min.js"></script>
+    <script src="spsn-api.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.2.8/EventEmitter.min.js"></script-->
 </head>
 <body>
-</body>
-<script src="spsn-api.js"></script>
-<script src="https://chr15m.github.io/bugout/bugout.min.js"></script>
-<script>
+    <main class="container">
+        <div class="container">
+            <spsn-peercount class="tag is-pulled-right"></spsn-peercount>
+            <spsn-status class="tag is-pulled-right"></spsn-status>
+        </div>
+        <section class="section container">
+            <spsn-qr class="ml-4 is-pulled-right" size="103x103"></spsn-qr>
+            <h1 class="title">Simple P2P Social Network</h1>
+            <h1 class="title is-5">spsn-api example</h1>
+        </section>
+    </main>
 
-    //let spsn = new SPSN("server", peerId)
-</script>
+    <script type="text/javascript">
+
+        let spsn = new SPSN({
+            awaitingTxt: "Waiting for peers . . .",
+            connectedTxt: "Peers connected!"
+        },
+            //"My custom identifier"
+        )
+        console.log(spsn)
+        // Get your instance's address
+        console.log(spsn.instance.address())
+        
+        // Create a profile
+        SPSN.profile({
+            firstname: "Bob",
+            lastname: "Tester",
+            email: "",
+            about: ""
+        })
+
+        // Create a new post
+        SPSN.post({
+            type: "post", //post, reply, share
+            message: "my message",
+            date: new Date()
+        })
+        spsn.e.emit("message","test")
+    
+        // Follow peers
+    
+        // Handle new follower request
+    
+        // Create a new post
+    
+        // Reply to an existing post
+    
+        // Handle incoming profile
+        
+        // Handle incoming post
+    
+        // Handle incoming reply
+    
+        // Re-share a post
+    
+    </script>    
+</body>
+
+
 </html>
