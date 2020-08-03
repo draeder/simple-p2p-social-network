@@ -4,17 +4,26 @@
 
 //
 let config = {}
-function SPSN(config, customId){
+function SPSN(config, customId) {
     this.config = config
     this.customId = customId
     let identifier
 
-//// Create re-usable signed identity
+//// Create re-usable signed identit
     //
     let keypair = nacl.box.keyPair()
-    console.log(keypair)
 
-//// Emitter functions
+//// Create IndexedDB Database
+    //
+    let db = new Dexie("peer-db-kp")
+    db.version(1).stores({
+        keys: '++id'
+    });
+    db.keys.put({keypair}).catch(function(error) {
+        console.error("Dexie Error: " + error);
+    });
+
+//// Event emitter
     //
     let e = new EventEmitter()
 
@@ -57,7 +66,7 @@ function SPSN(config, customId){
         }
 
         // Instantiate Bugout
-        let b = new Bugout(identifier)
+        let b = new Bugout(identifier, {keypair: keypair})
         
         b.heartbeat(30000)
 
