@@ -54,7 +54,10 @@
             message: "my message",
             date: new Date()
         })
-        spsn.e.emit("message","test")
+        spsn.message.on("something", function(msg){
+            console.log(msg)
+        })
+        spsn.message.emit("message","test")
     
         // Follow peers
     
