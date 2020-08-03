@@ -13,13 +13,15 @@
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/EventEmitter/5.2.8/EventEmitter.min.js"></script-->
 </head>
 <body>
-    <main class="container">
-        <div class="container">
-            <spsn-peercount class="tag is-pulled-right"></spsn-peercount>
-            <spsn-status class="tag is-pulled-right"></spsn-status>
+    <main class="section">
+        <div class="columns is-mobile is-centered">
+            <spsn-qr class="is-column" size="103x103"></spsn-qr>
         </div>
-        <section class="section container">
-            <spsn-qr class="ml-4 is-pulled-right" size="103x103"></spsn-qr>
+        <div class="columns is-mobile is-centered">
+            <spsn-status class="tag is-column"></spsn-status>
+            <spsn-peercount class="tag is-column"></spsn-peercount>
+        </div>
+        <section class="section container" style="padding-top: 0px;">
             <h1 class="title">Simple P2P Social Network</h1>
             <h1 class="title is-5">spsn-api example</h1>
         </section>
@@ -31,14 +33,21 @@
     <script type="text/javascript">
 
         let spsn = new SPSN({
+            // connectURL: default value is "https://social.peer.ooo" 
+            // Which is hosted on GitHub Pages as a helper for your convenience
+            connectURL: "https://social.peer.ooo", 
+
+            // awaitingTxt: Custom text when waiting for connections
             awaitingTxt: "Waiting for peers . . .",
-            connectedTxt: "Peers connected!"
+
+            // connectedTxt: Custom text when peers are connected
+            connectedTxt: "Peers connected!",
         },
             //"My custom identifier"
         )
-        console.log(spsn)
+
         // Get your instance's address
-        console.log(spsn.instance.address())
+        console.log(`Your joinable address: https://social.peer.ooo/spsn-api/example.html?p=${spsn.instance.address()}`)
         
         // Create a profile
         SPSN.profile({

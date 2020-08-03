@@ -55,7 +55,7 @@ function SPSN(config, customId) {
     else if(peerId) {
         console.log(`Share this URL with peers: ${url}`)
         identifier = peerId
-        console.log(`Joining existing server: ${peerId}`)
+        console.log(`Joining existing channel: ${peerId}`)
     }
 
     // Instantiate Bugout
