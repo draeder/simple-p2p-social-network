@@ -24,8 +24,8 @@
             <h1 class="title">Simple P2P Social Network</h1>
             <h1 class="title is-5">spsn-api example</h1>
         </section>
-        <section class="section container">
-            test 12345t6y
+        <section class="section container" id="posts">
+            <!-- New Posts & replies will appear here-->
         </section>
     </main>
 
@@ -62,9 +62,11 @@
             message: "my message",
             date: new Date()
         })
+
         spsn.message.on("something", function(msg){
             console.log(msg)
         })
+
         spsn.message.emit("message","test")
     
         // Follow peers
