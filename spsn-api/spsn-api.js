@@ -23,7 +23,6 @@ function SPSN(config, customId) {
         } else {
             keypair = value
         }
-        console.log(value)
     }).catch(function(err) {
         // This code runs if there were any errors
         console.log(err + " No Keypair - so store one")
@@ -181,7 +180,7 @@ function SPSN(config, customId) {
     }
     SPSN.profile = SPSN.prototype.profile
     return {
-        this: this,
+        s: this,
         message : e,
         instance : b
     }//test && e && b
@@ -304,5 +303,5 @@ function SPSN(config, customId) {
 //// Extensible Options handler
     // Get/set additional properties on objects
 
-//})
+
 
