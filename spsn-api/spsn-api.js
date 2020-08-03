@@ -15,12 +15,18 @@ function SPSN(config, customId) {
 
 //// Create IndexedDB Database
     //
-    let db = new Dexie("peer-db-kp")
-    db.version(1).stores({
-        keys: '++id'
-    });
-    db.keys.put({keypair}).catch(function(error) {
-        console.error("Dexie Error: " + error);
+    localforage.getItem('keyvaluepairs').then(function(value) {
+        // This code runs once the value has been loaded
+        // from the offline store.
+        if(!value){
+            localforage.setItem('keyvaluepairs', keypair)
+        } else {
+            keypair = value
+        }
+        console.log(value)
+    }).catch(function(err) {
+        // This code runs if there were any errors
+        console.log(err + " No Keypair - so store one")
     });
 
 //// Event emitter
