@@ -9,6 +9,13 @@ function SPSN(config, customId){
     this.customId = customId
     let identifier
 
+//// Create re-usable signed identity
+    //
+    let keypair = nacl.box.keyPair()
+    console.log(keypair)
+
+//// Emitter functions
+    //
     let e = new EventEmitter()
 
     e.on('message', function (text) {
