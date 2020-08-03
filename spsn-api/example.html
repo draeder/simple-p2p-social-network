@@ -22,7 +22,8 @@
         </div>
         <section class="section container" style="padding-top: 0px;">
             <h1 class="title">Simple P2P Social Network</h1>
-            <h1 class="title is-5">spsn-api example</h1>
+            <h2 class="title is-5">spsn-api example</h2>
+            <input id="post" class="input" type="text"></input>
         </section>
         <section class="section container" id="posts">
             <!-- New Posts & replies will appear here-->
@@ -60,7 +61,9 @@
         SPSN.post({
             type: "post", //post, reply, share
             message: "my message",
-            date: new Date()
+            date: new Date(), 
+            icons: [{share: "fa", reply: "fa", like: "fa"}],
+            postId: generateId()//generateId(length)
         })
 
         spsn.message.on("something", function(msg){
