@@ -61,7 +61,7 @@ function SPSN(config, customId) {
     // Instantiate Bugout
     let b = new Bugout(identifier, {keypair: keypair})
     
-    b.heartbeat(30000)
+    //b.heartbeat(30000)
 
     localStorage["peer-address"] = b.address()
 
