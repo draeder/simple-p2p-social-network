@@ -48,31 +48,33 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(err => console.error(err));
 
 //// Initialize a Bugout session
-    let b = new Bugout(serverId, {announce: trackers})
-    b.on("seen", function(address){
-        console.log("Server identifier: " + b.identifier)
-        document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
-        document.getElementsByTagName("bugout-status")[0].innerHTML=
-            "<i class='fa fa-exchange fa-lg' aria-hidden='true' style='color: green'></i>"
-    })
+    function bugout(trackers){
+        let b = new Bugout(serverId, {announce: trackers})
+        b.on("seen", function(address){
+            console.log("Server identifier: " + b.identifier)
+            document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
+            document.getElementsByTagName("bugout-status")[0].innerHTML=
+                "<i class='fa fa-exchange fa-lg' aria-hidden='true' style='color: green'></i>"
+        })
 
-//// Handle incoming messages
-    // Recieve inbound message from Bugout
-    b.on("message", function(address, msg){
-        //let message = JSON.stringify(msg)
-        processMsg(msg)
-    })
+    //// Handle incoming messages
+        // Recieve inbound message from Bugout
+        b.on("message", function(address, msg){
+            //let message = JSON.stringify(msg)
+            processMsg(msg)
+        })
 
-    // Process message types
-    function processMsg(message){
-        if(message.type == "profile"){
-            //console.log("Recieved an incoming message object of type 'profile'")
-        }
-        if(message.type == "post"){
-            addPost(message)
-        }
-        if(message.type == "reply"){
-            addReply(message)
+        // Process message types
+        function processMsg(message){
+            if(message.type == "profile"){
+                //console.log("Recieved an incoming message object of type 'profile'")
+            }
+            if(message.type == "post"){
+                addPost(message)
+            }
+            if(message.type == "reply"){
+                addReply(message)
+            }
         }
     }
 
