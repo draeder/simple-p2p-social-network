@@ -35,46 +35,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     //let arrUrl = profileId.split("-");
     //let serverName = arrUrl[0]
     let serverId = profileId // connect to existing instance
-    
-//// Tracker resolution
-    const resolver = new doh.DohResolver('https://1.1.1.1/dns-query');
-
-    let trackers = []
-    resolver.query('ws.oooooooooooooooooooooooooooo.ooo', 'TXT')
-        .then(response => {
-            response.answers.forEach(ans => trackers.push(ans.data.toString()))
-            bugout(trackers)
-        })
-        .catch(err => console.error(err));
 
 //// Initialize a Bugout session
-    function bugout(trackers){
-        let b = new Bugout(serverId, {announce: trackers})
-        b.on("seen", function(address){
-            console.log("Server identifier: " + b.identifier)
-            document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
-            document.getElementsByTagName("bugout-status")[0].innerHTML=
-                "<i class='fa fa-exchange fa-lg' aria-hidden='true' style='color: green'></i>"
-        })
+    let b = new Bugout(serverId, {announce: 'ws://ws.oooooooooooooooooooooooooooo.ooo:3000'})
+    b.on("seen", function(address){
+        console.log("Server identifier: " + b.identifier)
+        document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
+        document.getElementsByTagName("bugout-status")[0].innerHTML=
+            "<i class='fa fa-exchange fa-lg' aria-hidden='true' style='color: green'></i>"
+    })
 
-    //// Handle incoming messages
-        // Recieve inbound message from Bugout
-        b.on("message", function(address, msg){
-            //let message = JSON.stringify(msg)
-            processMsg(msg)
-        })
+//// Handle incoming messages
+    // Recieve inbound message from Bugout
+    b.on("message", function(address, msg){
+        //let message = JSON.stringify(msg)
+        processMsg(msg)
+    })
 
-        // Process message types
-        function processMsg(message){
-            if(message.type == "profile"){
-                //console.log("Recieved an incoming message object of type 'profile'")
-            }
-            if(message.type == "post"){
-                addPost(message)
-            }
-            if(message.type == "reply"){
-                addReply(message)
-            }
+    // Process message types
+    function processMsg(message){
+        if(message.type == "profile"){
+            //console.log("Recieved an incoming message object of type 'profile'")
+        }
+        if(message.type == "post"){
+            addPost(message)
+        }
+        if(message.type == "reply"){
+            addReply(message)
         }
     }
 
