@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         .catch(err => console.error(err));
 
 //// Initialize a Bugout session
-    let b = new Bugout(serverId, {announce: trackers)
+    let b = new Bugout(serverId, {announce: trackers})
     b.on("seen", function(address){
         console.log("Server identifier: " + b.identifier)
         document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
