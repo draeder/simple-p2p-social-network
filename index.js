@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let serverId = profileId // connect to existing instance
 
 //// Initialize a Bugout session
-    let b = new Bugout(serverId, {announce: 'ws://ws.oooooooooooooooooooooooooooo.ooo:3000'})
+    let b = new Bugout(serverId)
     b.on("seen", function(address){
         console.log("Server identifier: " + b.identifier)
         document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
