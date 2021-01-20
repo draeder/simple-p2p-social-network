@@ -35,9 +35,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     //let arrUrl = profileId.split("-");
     //let serverName = arrUrl[0]
     let serverId = profileId // connect to existing instance
+    
+//// Tracker resolution
+    const resolver = new doh.DohResolver('https://1.1.1.1/dns-query');
+
+    let trackers = []
+    resolver.query('ws.oooooooooooooooooooooooooooo.ooo', 'TXT')
+        .then(response => {
+            response.answers.forEach(ans => trackers.push(ans.data.toString()))
+            bugout(trackers)
+        })
+        .catch(err => console.error(err));
 
 //// Initialize a Bugout session
-    let b = new Bugout(serverId)
+    let b = new Bugout(serverId, {announce: trackers)
     b.on("seen", function(address){
         console.log("Server identifier: " + b.identifier)
         document.getElementsByTagName("bugout-status")[0].setAttribute("title", "Connected")
